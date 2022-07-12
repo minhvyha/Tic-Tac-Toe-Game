@@ -20,7 +20,7 @@ DGREY = (50, 50, 50)
 TURQUOISE = (64, 224, 208)
 
 # Font
-FONT = pygame.font.SysFont('comicsans', 25)
+FONT = pygame.font.SysFont('comicsans', 55)
 
 
 # An object 
@@ -61,7 +61,7 @@ class Block:
         self.col = col
         self.padding = padding 
         self.extra = extra
-        self.value = None
+        self.value = 'X'
 
     def draw(self):
         if self.value != None:
