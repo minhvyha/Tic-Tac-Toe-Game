@@ -11,7 +11,7 @@ HEIGHT = 700
 BOARD_WIDTH = 400
 BOARD_HEIGHT = 400
 
-
+FONT = pygame.font.SysFont('comicsans', 25)
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Sudoku')
@@ -54,7 +54,9 @@ def draw():
     # Update and display all the changes
     pygame.display.update()
 
-
+def draw_score(X, O, tie):
+    X = FONT.render(f'{X}', 1, BLACK)
+    WIN.blit(X, 10, 10)
 
 # Execute all the code
 if __name__ == '__main__':
