@@ -38,12 +38,12 @@ class Board:
 
         # Draw row
         for i in range(2):
-            thickness = 6
+            thickness = 5
             pygame.draw.line(self.WIN, WHITE, (self.padding // 2, (i + 1) * self.height // 3 + self.padding // 2), (self.width + self.padding // 2, (i + 1) * self.height // 3 + self.padding // 2), thickness)
 
         # Draw col
         for i in range(2):
-            thickness = 6
+            thickness = 5
             pygame.draw.line(self.WIN, WHITE, ((i + 1) * self.width // 3 + self.padding // 2, self.padding // 2), ((i + 1) * self.width // 3 + self.padding // 2, self.width + self.padding // 2), thickness)
 
 
