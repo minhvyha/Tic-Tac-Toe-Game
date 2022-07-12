@@ -23,13 +23,14 @@ FONT = pygame.font.SysFont('comicsans', 25)
 
 # An object 
 class Board:
-    def __init__(self, WIN, width, height) -> None:
+    def __init__(self, WIN, width, height, padding) -> None:
         # 9 x 9 sudoku board
         self.board = [[Block(WIN, row, col, width, height) for row in range(9)]for col in range(9)]
         # Get the reference for the window
         self.WIN = WIN
         self.width = width
         self.height = height
+        self.padding = padding
 
 
     # Draw the board into the window
@@ -38,12 +39,12 @@ class Board:
         # Draw row
         for i in range(2):
             thickness = 7
-            pygame.draw.line(self.WIN, DGREY, (0, (i + 1) * self.height // 3), (self.width, (i + 1) * self.height // 3), thickness)
+            pygame.draw.line(self.WIN, DGREY, (self.padding // 2, (i + 1) * self.height // 3 + self.padding // 2), (self.width + self.padding // 2, (i + 1) * self.height // 3 + self.padding // 2), thickness)
 
         # Draw col
         for i in range(2):
             thickness = 7
-            pygame.draw.line(self.WIN, DGREY, ((i + 1) * self.width // 3, 0), ((i + 1) * self.width // 3, self.width), thickness)
+            pygame.draw.line(self.WIN, DGREY, ((i + 1) * self.width // 3 + self.padding // 2, self.padding // 2), ((i + 1) * self.width // 3 + self.padding // 2, self.width + self.padding // 2), thickness)
 
 
 class Block:

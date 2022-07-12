@@ -23,7 +23,7 @@ WHITE = (255, 255, 255)
 FPS = 60
 
 # Set up the board
-board = Board(WIN, WIDTH, HEIGHT)
+board = Board(WIN, BOARD_WIDTH, BOARD_HEIGHT, WIDTH - BOARD_WIDTH)
 
 
 
