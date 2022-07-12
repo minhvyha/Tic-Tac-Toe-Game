@@ -23,7 +23,7 @@ WHITE = (255, 255, 255)
 FPS = 60
 
 # Set up the board
-
+board = Board(WIN, WIDTH, HEIGHT)
 
 
 
@@ -50,7 +50,7 @@ def draw():
 
     # Make changes to the window
     WIN.fill((WHITE))
-    
+    board.draw()
     # Update and display all the changes
     pygame.display.update()
 
