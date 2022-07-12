@@ -55,7 +55,7 @@ class Block:
         self.WIN = WIN
         self.row = row
         self.col = col
-        self.value = 0
+        self.value = None
 
     def draw(self):
         if self.value != -1:
