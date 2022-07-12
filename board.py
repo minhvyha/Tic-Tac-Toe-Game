@@ -1,3 +1,4 @@
+from re import X
 import pygame
 
 pygame.init()
@@ -24,8 +25,6 @@ FONT = pygame.font.SysFont('comicsans', 25)
 # An object 
 class Board:
     def __init__(self, WIN, width, height, padding) -> None:
-        # 9 x 9 sudoku board
-        self.board = [[Block(WIN, row, col, width, height) for row in range(3)]for col in range(3)]
         # Get the reference for the window
         self.WIN = WIN
         self.width = width
@@ -33,6 +32,8 @@ class Board:
         self.padding = padding
         self.extra_padding = 70
 
+
+        self.board = [[Block(WIN, row, col, width, height, padding, self.extra_padding) for row in range(3)]for col in range(3)]
 
     # Draw the board into the window
     def draw(self) -> None:
@@ -49,16 +50,20 @@ class Board:
 
 
 class Block:
-    def __init__(self, WIN, row, col, width, height):
+    def __init__(self, WIN, row, col, width, height, padding ,extra):
         self.width = width
         self.height = height
         self.WIN = WIN
         self.row = row
         self.col = col
+        self.padding = padding 
+        self.extra = extra
         self.value = None
 
     def draw(self):
-        if self.value != -1:
-            num = FONT.render(f'{self.value}', 1, BLACK)
-            self.WIN.blit(num, (self.width // 9 * self.row + (self.width // 9 // 2) - num.get_width() // 2, + (self.height // 9) * self.col + self.height // 9 // 2 - num.get_height() // 2))
+        if self.value != None:
+            value = FONT.render(f'{self.value}', 1, WHITE)
+            x = self.padding // 2 + self.extra + (self.width * self.row)
+            y = self.padding // 2
+            self.WIN.blit(value, ())
             
