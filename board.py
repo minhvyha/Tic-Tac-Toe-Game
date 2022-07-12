@@ -1,3 +1,4 @@
+from operator import ilshift
 from re import X
 import pygame
 
@@ -47,7 +48,9 @@ class Board:
         for i in range(2):
             thickness = 5
             pygame.draw.line(self.WIN, WHITE, ((i + 1) * self.width // 3 + self.padding // 2, self.padding // 2 + self.extra_padding), ((i + 1) * self.width // 3 + self.padding // 2, self.width + self.padding // 2 + self.extra_padding), thickness)
-
+        for i in self.board:
+            for j in i:
+                j.draw()
 
 class Block:
     def __init__(self, WIN, row, col, width, height, padding ,extra):
@@ -64,6 +67,6 @@ class Block:
         if self.value != None:
             value = FONT.render(f'{self.value}', 1, WHITE)
             x = self.padding // 2 + self.extra + (self.width * self.row)
-            y = self.padding // 2
-            self.WIN.blit(value, ())
+            y = self.padding // 2 + (self.height * self.col)
+            self.WIN.blit(value, (x, y))
             
