@@ -61,7 +61,7 @@ class Block:
         self.col = col
         self.padding = padding 
         self.extra = extra
-        self.value = 'X'
+        self.value = None
 
     def draw(self):
         if self.value != None:
