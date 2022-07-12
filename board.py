@@ -38,13 +38,13 @@ class Board:
 
         # Draw row
         for i in range(2):
-            thickness = 7
-            pygame.draw.line(self.WIN, DGREY, (self.padding // 2, (i + 1) * self.height // 3 + self.padding // 2), (self.width + self.padding // 2, (i + 1) * self.height // 3 + self.padding // 2), thickness)
+            thickness = 6
+            pygame.draw.line(self.WIN, WHITE, (self.padding // 2, (i + 1) * self.height // 3 + self.padding // 2), (self.width + self.padding // 2, (i + 1) * self.height // 3 + self.padding // 2), thickness)
 
         # Draw col
         for i in range(2):
-            thickness = 7
-            pygame.draw.line(self.WIN, DGREY, ((i + 1) * self.width // 3 + self.padding // 2, self.padding // 2), ((i + 1) * self.width // 3 + self.padding // 2, self.width + self.padding // 2), thickness)
+            thickness = 6
+            pygame.draw.line(self.WIN, WHITE, ((i + 1) * self.width // 3 + self.padding // 2, self.padding // 2), ((i + 1) * self.width // 3 + self.padding // 2, self.width + self.padding // 2), thickness)
 
 
 class Block:

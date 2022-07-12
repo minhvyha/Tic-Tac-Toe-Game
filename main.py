@@ -8,8 +8,8 @@ pygame.init()
 # Window set up
 WIDTH = 700
 HEIGHT = 700
-BOARD_WIDTH = 500
-BOARD_HEIGHT = 500
+BOARD_WIDTH = 400
+BOARD_HEIGHT = 400
 
 
 
@@ -49,7 +49,7 @@ def main():
 def draw():
 
     # Make changes to the window
-    WIN.fill((WHITE))
+    WIN.fill((BLACK))
     board.draw()
     # Update and display all the changes
     pygame.display.update()
