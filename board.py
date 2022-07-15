@@ -56,9 +56,7 @@ class Board:
     def tick(self, x, y):
         row = (y - (self.padding // 2 + self.extra_padding)) // (self.height // 3)
         col = (x - self.padding // 2) // (self.width // 3)
-        self.board[row][col].value = Block.Current[0]
-        Block.Current.append(Block.Current[0])
-        Block.Current.pop(0)
+        self.board[row][col].assign()
 
 class Block:
     Current = ['O', 'X']
@@ -79,9 +77,9 @@ class Block:
             y = self.padding // 2 + self.extra + (self.height // 3 * self.col) + 5
             self.WIN.blit(value, (x, y))
     
-    def X(self):
-        self.value = 'X'
-    
-    def O(self):
-        self.value = 'O'
-            
+    def assign(self):
+        if self.value != None:
+            return
+        self.value = Block.Current[0]
+        Block.Current.append(Block.Current[0])
+        Block.Current.pop(0)
