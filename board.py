@@ -56,9 +56,12 @@ class Board:
     def tick(self, x, y):
         row = (y - (self.padding // 2 + self.extra_padding)) // (self.height // 3)
         col = (x - self.padding // 2) // (self.width // 3)
-        print((row, col))
+        self.board[row][col].value = Block.Current[0]
+        Block.Current.append(Block.Current[0])
+        Block.Current.pop(0)
 
 class Block:
+    Current = ['O', 'X']
     def __init__(self, WIN, row, col, width, height, padding ,extra):
         self.width = width
         self.height = height
