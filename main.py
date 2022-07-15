@@ -24,7 +24,8 @@ WHITE = (255, 255, 255)
 FPS = 60
 
 # Set up the board
-board = Board(WIN, BOARD_WIDTH, BOARD_HEIGHT, WIDTH - BOARD_WIDTH)
+EXTRA_PADDING = 70
+board = Board(WIN, BOARD_WIDTH, BOARD_HEIGHT, WIDTH - BOARD_WIDTH, EXTRA_PADDING)
 
 
 
@@ -42,6 +43,14 @@ def main():
             if event.type == pygame.QUIT:
                 isRun = False
                 break
+            if pygame.mouse.get_pressed()[0]:
+                x, y = pygame.mouse.get_pos()
+                if x < (WIDTH - BOARD_WIDTH) // 2 or x > (WIDTH - BOARD_WIDTH) // 2 + BOARD_WIDTH:
+                    continue
+                if y < (WIDTH - BOARD_WIDTH) // 2 + EXTRA_PADDING or y > (WIDTH - BOARD_WIDTH) // 2 + BOARD_WIDTH:
+                    continue
+                
+
         draw()
     pygame.quit()
 

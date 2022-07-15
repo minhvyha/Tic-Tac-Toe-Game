@@ -25,17 +25,16 @@ FONT = pygame.font.SysFont('comicsans', 85)
 
 # An object 
 class Board:
-    def __init__(self, WIN, width, height, padding) -> None:
+    def __init__(self, WIN, width, height, padding, extra_padding) -> None:
         # Get the reference for the window
         self.WIN = WIN
         self.width = width
         self.height = height
         self.padding = padding
-        self.extra_padding = 70
-
-
+        self.extra_padding = extra_padding
         self.board = [[Block(WIN, row, col, width, height, padding, self.extra_padding) for row in range(3)]for col in range(3)]
 
+    
     # Draw the board into the window
     def draw(self) -> None:
 
@@ -51,6 +50,11 @@ class Board:
         for i in self.board:
             for j in i:
                 j.draw()
+    
+    
+    def tick(self):
+        ...
+
 
 class Block:
     def __init__(self, WIN, row, col, width, height, padding ,extra):
@@ -69,4 +73,10 @@ class Block:
             x = self.padding // 2 + (self.width // 3 * self.row) + 35
             y = self.padding // 2 + self.extra + (self.height // 3 * self.col) + 5
             self.WIN.blit(value, (x, y))
+    
+    def X(self):
+        self.value = 'X'
+    
+    def O(self):
+        self.value = 'O'
             
