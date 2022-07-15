@@ -52,9 +52,9 @@ class Board:
                 j.draw()
     
     
-    def tick(self):
-        ...
-
+    def tick(self, x, y):
+        row = (self.width // 3) // (x - self.padding // 2)
+        print(row)
 
 class Block:
     def __init__(self, WIN, row, col, width, height, padding ,extra):
