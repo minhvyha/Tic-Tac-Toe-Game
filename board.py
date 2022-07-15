@@ -53,7 +53,8 @@ class Board:
     
     
     def tick(self, x, y):
-        row = (self.width // 3) // (x - (self.padding // 2 + self.extra_padding))
+        row = (y - (self.padding // 2 + self.extra_padding)) // (self.width // 3)
+        print(row)
 
 class Block:
     def __init__(self, WIN, row, col, width, height, padding ,extra):

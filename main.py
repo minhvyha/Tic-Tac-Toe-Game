@@ -47,10 +47,8 @@ def main():
                 x, y = pygame.mouse.get_pos()
                 if x < (WIDTH - BOARD_WIDTH) // 2 or x > (WIDTH - BOARD_WIDTH) // 2 + BOARD_WIDTH:
                     continue
-                if y < (WIDTH - BOARD_WIDTH) // 2 + EXTRA_PADDING or y > (WIDTH - BOARD_WIDTH) // 2 + BOARD_WIDTH:
+                if y < (WIDTH - BOARD_WIDTH) // 2 + EXTRA_PADDING or y > (WIDTH - BOARD_WIDTH) // 2 + BOARD_WIDTH + EXTRA_PADDING - 10:
                     continue
-                print(x)
-                print(y)
                 board.tick(x, y)
 
         draw()
