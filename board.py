@@ -1,5 +1,6 @@
 from operator import ilshift
 from re import X
+from turtle import width
 import pygame
 
 pygame.init()
@@ -53,8 +54,9 @@ class Board:
     
     
     def tick(self, x, y):
-        row = (y - (self.padding // 2 + self.extra_padding)) // (self.width // 3)
-        print(row)
+        row = (y - (self.padding // 2 + self.extra_padding)) // (self.height // 3)
+        col = (x - self.padding // 2) // (self.width // 3)
+        print((row, col))
 
 class Block:
     def __init__(self, WIN, row, col, width, height, padding ,extra):
