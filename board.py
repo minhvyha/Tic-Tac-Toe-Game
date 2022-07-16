@@ -61,7 +61,11 @@ class Board:
         self.checkTie()
 
     def checkWin(self, row, col):
-        ...
+        curr_row = []
+        curr_col = []
+        for i in range(3):
+            curr_row.append(self.board[row][i].value)
+            curr_col.append(self.board[i][col].value)
 
     def checkTie(self):
         for i in self.board:
