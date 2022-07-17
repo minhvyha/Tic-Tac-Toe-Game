@@ -32,7 +32,11 @@ board = Board(WIN, BOARD_WIDTH, BOARD_HEIGHT, WIDTH - BOARD_WIDTH, EXTRA_PADDING
 
 def main():
     isRun = True
-
+    winner = None
+    X = 0
+    O = 0
+    tie = 0
+    winner = None
     # Loop forever to draw up the window every second
     while isRun:
         
@@ -49,23 +53,34 @@ def main():
                     continue
                 if y < (WIDTH - BOARD_WIDTH) // 2 + EXTRA_PADDING or y > (WIDTH - BOARD_WIDTH) // 2 + BOARD_WIDTH + EXTRA_PADDING - 5:
                     continue
-                if board.tick(x, y):
-                    isRun = False
-
-
-        draw()
+                winner = board.tick(x, y)
+                if winner:
+                    if winner == 'X':
+                        X += 1
+                    elif winner == 'O':
+                        O += 1
+                    else:
+                        tie += 1
+        if winner != None:
+            draw_win(winner)
+            
+        draw(X, O, tie)
     pygame.quit()
 
 
 #Function to draw the window
-def draw():
+def draw(X, O, tie):
 
     # Make changes to the window
     WIN.fill((BLACK))
     board.draw()
-    draw_score(0, 0, 0)
+    draw_score(X, O, tie)
     # Update and display all the changes
     pygame.display.update()
+
+def draw_win():
+    ...
+
 
 def draw_score(X, O, tie):
     x_player = FONT.render('PLAYER X', 1, WHITE)

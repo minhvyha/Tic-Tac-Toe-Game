@@ -58,10 +58,10 @@ class Board:
         col = (x - self.padding // 2) // (self.width // 3)
         self.board[row][col].assign()
         if self.checkWin(row, col):
-            return True
+            return Block.Current[1]
         if self.checkTie():
-            return True
-        return False
+            return 'Tie'
+        return None
 
     def checkWin(self, row, col):
         curr_row = []
