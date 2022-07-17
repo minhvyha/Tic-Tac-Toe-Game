@@ -57,22 +57,56 @@ class Board:
         row = (y - (self.padding // 2 + self.extra_padding)) // (self.height // 3)
         col = (x - self.padding // 2) // (self.width // 3)
         self.board[row][col].assign()
-        self.checkWin(row, col)
-        self.checkTie()
+        if self.checkWin(row, col):
+            return True
+        if self.checkTie():
+            return True
+        return False
 
     def checkWin(self, row, col):
         curr_row = []
         curr_col = []
+        diag1 = [(0, 0), (2, 2), (1, 1)]
+        diag2 = [(2, 0), (0, 2), (1, 1)]
         for i in range(3):
             curr_row.append(self.board[row][i].value)
             curr_col.append(self.board[i][col].value)
+        pos = (row, col)
+        diag_right = []
+        diag_left = []
+        if pos in diag2:
+            diag_right.append(self.board[2][0])
+            diag_right.append(self.board[1][1])
+            diag_right.append(self.board[0][2])
+        if pos in diag1:
+            for i in range(3):
+                diag_left.append(self.board[i][i])
+        if diag_left:
+            for i, value in enumerate(diag_left):
+                if value != Block.Current[1]:
+                    break
+                if i == 2:
+                    return True
+        if diag_right:
+            for i, value in enumerate(diag_right):
+                if value != Block.Current[1]:
+                    break
+                if i == 2:
+                    return True
+        curr_col = set(curr_col)
+        curr_row = set(curr_row)
+        if len(curr_col) == 1 and Block.Current[1] in curr_col:
+            return True
+        if len(curr_row) == 1 and Block.Current[1] in curr_row:
+            return True
+        return False
 
     def checkTie(self):
         for i in self.board:
             for j in i:
                 if j.value == None:
-                    return True
-        return False
+                    return False
+        return True
 
 class Block:
     Current = ['O', 'X']

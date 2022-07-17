@@ -49,7 +49,9 @@ def main():
                     continue
                 if y < (WIDTH - BOARD_WIDTH) // 2 + EXTRA_PADDING or y > (WIDTH - BOARD_WIDTH) // 2 + BOARD_WIDTH + EXTRA_PADDING - 5:
                     continue
-                board.tick(x, y)
+                if board.tick(x, y):
+                    print(True)
+
 
         draw()
     pygame.quit()
