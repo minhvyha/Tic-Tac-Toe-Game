@@ -62,6 +62,7 @@ def main():
                         O += 1
                     else:
                         tie += 1
+
         if winner != None:
             draw_win(winner, X, O, tie)
             continue
