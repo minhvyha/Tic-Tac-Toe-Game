@@ -12,6 +12,7 @@ BOARD_WIDTH = 400
 BOARD_HEIGHT = 400
 
 FONT = pygame.font.SysFont('comicsans', 20)
+FONT_WIN = pygame.font.SysFont('comicsans', 50)
 
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -28,7 +29,7 @@ EXTRA_PADDING = 70
 board = Board(WIN, BOARD_WIDTH, BOARD_HEIGHT, WIDTH - BOARD_WIDTH, EXTRA_PADDING)
 
 
-
+WIN_TEXT = 100
 
 def main():
     isRun = True
@@ -41,13 +42,13 @@ def main():
     while isRun:
         
         # Get any event from user such as mouse click, key pressed
-
+        
         # pygame.event.get() = [click (50, 100)]
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 isRun = False
                 break
-            if pygame.mouse.get_pressed()[0]:
+            if winner == None and pygame.mouse.get_pressed()[0]:
                 x, y = pygame.mouse.get_pos()
                 if x < (WIDTH - BOARD_WIDTH) // 2 or x > (WIDTH - BOARD_WIDTH) // 2 + BOARD_WIDTH - 5:
                     continue
@@ -62,8 +63,8 @@ def main():
                     else:
                         tie += 1
         if winner != None:
-            draw_win(winner)
-            
+            draw_win(winner, X, O, tie)
+            continue
         draw(X, O, tie)
     pygame.quit()
 
@@ -78,8 +79,15 @@ def draw(X, O, tie):
     # Update and display all the changes
     pygame.display.update()
 
-def draw_win():
-    ...
+def draw_win(winner, X, O, tie):
+    # Make changes to the window
+    WIN.fill((BLACK))
+    board.draw()
+    draw_score(X, O, tie)
+    winner = FONT_WIN.render(f'{winner} WIN!', 1, WHITE)
+    # Update and display all the changes
+    WIN.blit(winner, (WIDTH // 2 - winner.get_width() // 2, WIN_TEXT))
+    pygame.display.update()     
 
 
 def draw_score(X, O, tie):
