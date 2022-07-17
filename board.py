@@ -75,12 +75,12 @@ class Board:
         diag_right = []
         diag_left = []
         if pos in diag2:
-            diag_right.append(self.board[2][0])
-            diag_right.append(self.board[1][1])
-            diag_right.append(self.board[0][2])
+            diag_right.append(self.board[2][0].value)
+            diag_right.append(self.board[1][1].value)
+            diag_right.append(self.board[0][2].value)
         if pos in diag1:
             for i in range(3):
-                diag_left.append(self.board[i][i])
+                diag_left.append(self.board[i][i].value)
         if diag_left:
             for i, value in enumerate(diag_left):
                 if value != Block.Current[1]:
