@@ -1,6 +1,8 @@
 # Tic Tac Toe Game - Pygame
 ## [Watch it on youtube]()
 
+### Note: I was forced to make this long README.md 🙂
+
 ## **Description:**
 ### Technologies used:
 
@@ -19,7 +21,7 @@ Tic Tac Toe is my final project for CS50P with Harvard University Online. This g
 
 ## **main.py**
 
-The main.py file contains all the code that will be executed when the program is run. It import classes Block and Board from the file board.py, which represent block in the board and the board itself, respectively.
+The main.py file contains all the code that will be executed when the program is run. It import Pygame library classes Block and Board from the file board.py, which represent block in the board and the board itself, respectively.
 
 The main.py file first inits the pygame library and declares colour variables that will be used to illustrate the game in the program. The main function in this file is where all others functions are called, and the game is controlled in this main function. 
 
@@ -31,7 +33,13 @@ The draw_win function is called when there is a winner, and its responsibility i
 
 ## **board.py**
 
+The board.py import the Pygame library and then initialises it to draw the board and the cells in the window. Colours variables like Black and White are also declared in this file. This file contains two classes, Board and Block, to represent the board and cell of the tic tac toe game.
 
+The Board class init function takes 5 arguments to initialise essential data and information for the class to function like the window, classes, width and height. 
+
+The Board class also contains function like draw for drawing the board into the window, the tick function to make a input the player move, the checkWin and checkTie function to decide when the round will be end and finally the reset function which will reset everything.
+
+The Block class represent a cell in the board of tic tac toe which takes 7 arguments to initialise. It will be drawn into the window if the cell have the value of X or O. This class has functions such as draw, assign and reset.
 
 ### Creator - **Minh Vy Ha**
 ![preview img](/preview.png)
