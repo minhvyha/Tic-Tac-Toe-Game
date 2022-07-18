@@ -48,6 +48,10 @@ def main():
             if event.type == pygame.QUIT:
                 isRun = False
                 break
+            keys = pygame.key.get_pressed()
+            if keys[pygame.K_r] and winner != None:
+                winner = None
+                board.reset()
             if winner == None and pygame.mouse.get_pressed()[0]:
                 x, y = pygame.mouse.get_pos()
                 if x < (WIDTH - BOARD_WIDTH) // 2 or x > (WIDTH - BOARD_WIDTH) // 2 + BOARD_WIDTH - 5:
@@ -85,7 +89,11 @@ def draw_win(winner, X, O, tie):
     WIN.fill((BLACK))
     board.draw()
     draw_score(X, O, tie)
-    winner = FONT_WIN.render(f'{winner} WIN!', 1, WHITE)
+    if winner == 'Tie':
+        winner = FONT_WIN.render('Tie!', 1, WHITE)
+    else:
+        winner = FONT_WIN.render(f'{winner} WIN!', 1, WHITE)
+    
     # Update and display all the changes
     WIN.blit(winner, (WIDTH // 2 - winner.get_width() // 2, WIN_TEXT))
     pygame.display.update()     

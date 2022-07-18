@@ -108,6 +108,11 @@ class Board:
                     return False
         return True
 
+    def reset(self):
+        for i in self.board:
+            for j in i:
+                j.reset()
+
 class Block:
     Current = ['O', 'X']
     def __init__(self, WIN, row, col, width, height, padding ,extra):
@@ -133,3 +138,6 @@ class Block:
         self.value = Block.Current[0]
         Block.Current.append(Block.Current[0])
         Block.Current.pop(0)
+    
+    def reset(self):
+        self.value = None
