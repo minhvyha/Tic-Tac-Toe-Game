@@ -8,17 +8,9 @@ pygame.init()
 
 
 # Color
-RED = (255, 0, 0)
-GREEN = (60, 255, 0)
-BLUE = (0, 0, 255)
-YELLOW = (255, 255, 120)
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
-PURPLE = (128, 0, 128)
-ORANGE = (255, 165, 0)
-GREY = (180, 180, 180)
-DGREY = (50, 50, 50)
-TURQUOISE = (64, 224, 208)
+
 
 # Font
 FONT = pygame.font.SysFont('comicsans', 85)
