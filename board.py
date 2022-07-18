@@ -1,6 +1,3 @@
-from operator import ilshift
-from re import X
-from turtle import width
 import pygame
 
 pygame.init()

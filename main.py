@@ -33,7 +33,6 @@ WIN_TEXT = 100
 
 def main():
     isRun = True
-    winner = None
     X = 0
     O = 0
     tie = 0
