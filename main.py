@@ -12,7 +12,7 @@ BOARD_WIDTH = 400
 BOARD_HEIGHT = 400
 
 FONT = pygame.font.SysFont('comicsans', 20)
-FONT_WIN = pygame.font.SysFont('comicsans', 50)
+FONT_WIN = pygame.font.SysFont('comicsans', 40)
 
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -88,13 +88,15 @@ def draw_win(winner, X, O, tie):
     WIN.fill((BLACK))
     board.draw()
     draw_score(X, O, tie)
+    reset = FONT_WIN.render('Press R to play!', 1, WHITE)
     if winner == 'Tie':
         winner = FONT_WIN.render('Tie!', 1, WHITE)
     else:
         winner = FONT_WIN.render(f'{winner} WIN!', 1, WHITE)
     
     # Update and display all the changes
-    WIN.blit(winner, (WIDTH // 2 - winner.get_width() // 2, WIN_TEXT))
+    WIN.blit(winner, (WIDTH // 2 - winner.get_width() // 2, WIN_TEXT - 10))
+    WIN.blit(reset,(WIDTH // 2 - reset.get_width() // 2, WIN_TEXT + 40) )
     pygame.display.update()     
 
 
